@@ -1,25 +1,29 @@
 import {createBrowserRouter, Outlet} from "react-router"
+import AppNavbar from "../layout/AppBar.tsx";
+import HomePage from "../layout/HomePage.tsx";
+import LanguageCourse from "../containers/components/LanguageCourse.tsx";
 
-export const AppRoutes =createBrowserRouter([
-    {
-        path: `/`,
-        element: (
-            <>
-                <h1>Welcome</h1>
-                <Outlet/>
-            </>
-        ),
-        children: [
-            {
-                index: true,
-                element: <h1>children</h1>,
-            },
-            {
-                element: <h1>404</h1>
-            }
-        ]
-    },
-]
+export const AppRoutes = createBrowserRouter([
+        {
+            path: `/`,
+            element: (
+                <>
+                    <AppNavbar/>
+                    <Outlet/>
+                </>
+            ),
+            children: [
+                {
+                    index: true,
+                    element: <HomePage/>,
+                },
+                {
+                    path: "/courses/:language",
+                    element: <LanguageCourse/>,
+                }
+            ]
+        },
+    ]
 )
 
 
