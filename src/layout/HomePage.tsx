@@ -72,7 +72,7 @@ const HomePage = () => {
             </section>
 
             {/* FEATURES SECTION */}
-            <section className="py-5 bg-light text-dark">
+            <section className="py-5">
                 <Container>
                     <Row className="text-center mb-4">
                         <Col>
