@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 const AppBar = () => {
     return (
         <Navbar expand="lg" className="theme-navbar" variant="dark" sticky="top">
-            <Container>
+            <Container fluid>
                 <Navbar.Brand as={Link} to="/">
                     CodingUni
                 </Navbar.Brand>
