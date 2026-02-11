@@ -1,7 +1,7 @@
 import { Navbar, Container, Nav } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
-const AppNavbar = () => {
+const AppBar = () => {
     return (
         <Navbar expand="lg" className="theme-navbar" variant="dark" sticky="top">
             <Container>
@@ -20,4 +20,4 @@ const AppNavbar = () => {
     )
 }
 
-export default AppNavbar
+export default AppBar

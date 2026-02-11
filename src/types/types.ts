@@ -3,7 +3,8 @@ export interface UserDto {
     password: string
 }
 
-export interface ProgrammingLanguages {
+export interface ProgrammingLanguage {
     name: string
+    id:number
     src: string
 }

@@ -1,9 +1,13 @@
 import {Container, Col, Row} from "react-bootstrap"
 import {Link} from "react-router-dom"
 import {LANGUAGES} from "../util/Languages.ts";
+import {useDispatch} from "react-redux";
+import {setLanguage} from "../config/store/slices/LanguageSlice.ts";
 
 
 const HomePage = () => {
+    const dispatch = useDispatch()
+
     return (
         <>
             {/* HERO SECTION */}
@@ -49,14 +53,14 @@ const HomePage = () => {
                     <Row className="g-4 justify-content-center">
                         {LANGUAGES.map((lang) => (
                             <Col
-                                key={lang.name}
+                                key={lang.id}
                                 xs={6}
                                 sm={4}
                                 md={3}
                                 lg={2}
                                 className="text-center"
                             >
-                                <Link to={`/courses/${lang.name}`} className="text-decoration-none">
+                                <Link onClick={() => dispatch(setLanguage({id: lang.id, name: lang.name, src: ""}))} to={`/courses/${lang.name}`} className="text-decoration-none">
                                     <img
                                         src={lang.src}
                                         alt={lang.name}
