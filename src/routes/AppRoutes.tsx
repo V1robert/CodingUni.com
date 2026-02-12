@@ -1,6 +1,6 @@
 import {createBrowserRouter} from "react-router"
 import HomePage from "../layout/HomePage.tsx";
-import LanguageCourse from "../containers/components/LanguageCourse.tsx";
+import LanguageCourse from "../containers/pages/LanguageCourse.tsx";
 import Template from "../layout/Template.tsx";
 
 export const AppRoutes = createBrowserRouter([

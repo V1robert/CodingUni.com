@@ -10,7 +10,7 @@ const createRootReducer = () =>
     combineReducers({
         [rootApi.reducerPath]: rootApi.reducer,
         user: userSlice,
-        languages: languageSlice,
+        language: languageSlice,
     })
 
 export default createRootReducer

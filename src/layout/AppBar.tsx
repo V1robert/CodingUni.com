@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const AppBar = () => {
     return (
-        <Navbar expand="lg" className="theme-navbar" variant="dark" sticky="top">
+        <Navbar expand="lg" className="theme-navbar" variant="dark" >
             <Container fluid>
                 <Navbar.Brand as={Link} to="/">
                     CodingUni

@@ -1,11 +1,11 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query";
-import {IS_SVILUPPO, ROOT_API} from "../util/Constants.ts";
+import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
+import {BASE_URL, IS_SVILUPPO} from "../util/Constants.ts";
 import type { RootState } from "../config/store/store"
 
 export const rootApi = createApi({
     reducerPath: "root",
     baseQuery: fetchBaseQuery({
-        baseUrl: ROOT_API,
+        baseUrl: BASE_URL,
         credentials: "include",
         prepareHeaders: (headers, api) => {
             const state: RootState = api.getState() as RootState
@@ -17,6 +17,6 @@ export const rootApi = createApi({
             return headers
         }
     }),
-    tagTypes: ["USER", "CODICI_ACCISA", "TIPI_DOCUMENTO", "TIPI_DOCUMENTO_FILTRATI"],
+    tagTypes: ["USER", "COURSE"],
     endpoints: () => ({})
 })
