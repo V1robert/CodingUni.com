@@ -1,12 +1,12 @@
 import {createBrowserRouter} from "react-router"
-import HomePage from "../layout/HomePage.tsx";
-import LanguageCourse from "../containers/pages/LanguageCourse.tsx";
+import HomePage from "../containers/pages/HomePage.tsx";
 import Template from "../layout/Template.tsx";
+import CoursePage from "../containers/pages/CoursePage.tsx";
 
 export const AppRoutes = createBrowserRouter([
         {
             path: `/`,
-            element:<Template/>,
+            element: <Template/>,
 
             children: [
                 {
@@ -15,7 +15,7 @@ export const AppRoutes = createBrowserRouter([
                 },
                 {
                     path: "/courses/:language",
-                    element: <LanguageCourse/>,
+                    element: <CoursePage/>,
                 }
             ]
         },

@@ -1,8 +1,8 @@
-import {Container, Col, Row} from "react-bootstrap"
+import {Col, Container, Row} from "react-bootstrap"
 import {Link} from "react-router-dom"
-import {LANGUAGES} from "../util/Languages.ts";
+import {LANGUAGES} from "../../util/Languages.ts";
 import {useDispatch} from "react-redux";
-import {setLanguage} from "../config/store/slices/LanguageSlice.ts";
+import {setLanguage} from "../../config/store/slices/LanguageSlice.ts";
 
 
 const HomePage = () => {
@@ -60,7 +60,8 @@ const HomePage = () => {
                                 lg={2}
                                 className="text-center"
                             >
-                                <Link onClick={() => dispatch(setLanguage({id: lang.id, name: lang.name, src: ""}))} to={`/courses/${lang.name}`} className="text-decoration-none">
+                                <Link onClick={() => dispatch(setLanguage({id: lang.id, name: lang.name, src: ""}))}
+                                      to={`/courses/${lang.name}`} className="text-decoration-none">
                                     <img
                                         src={lang.src}
                                         alt={lang.name}
