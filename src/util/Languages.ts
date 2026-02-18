@@ -1,11 +1,11 @@
-import jsLogo from "../../public/assets/javascript.svg";
-import tsLogo from "../../public/assets/typescript.svg";
-import reactLogo from "../../public/assets/react.svg";
-import javaLogo from "../../public/assets/java-original.svg";
-import javaEELogo from "../../public/assets/javaEE.svg";
-import mysqlLogo from "../../public/assets/mysql.svg";
-import htmlLogo from "../../public/assets/html5.svg";
-import cssLogo from "../../public/assets/css3.svg";
+import jsLogo from "../assets/javascript.svg";
+import tsLogo from "../assets/typescript.svg";
+import reactLogo from "../assets/react.svg";
+import javaLogo from "../assets/java-original.svg";
+import javaEELogo from "../assets/javaEE.svg";
+import mysqlLogo from "../assets/mysql.svg";
+import htmlLogo from "../assets/html5.svg";
+import cssLogo from "../assets/css3.svg";
 import type {ProgrammingLanguage} from "../types/types.ts";
 
 export const LANGUAGES: ProgrammingLanguage[] = [
@@ -19,3 +19,8 @@ export const LANGUAGES: ProgrammingLanguage[] = [
     {name: "MySQL", id: 7, src: mysqlLogo},
 
 ]
+
+export const LANGUAGE_IMAGE_MAP: Record<string, string> =
+    Object.fromEntries(
+        LANGUAGES.map(lang => [lang.name, lang.src])
+    );

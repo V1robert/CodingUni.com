@@ -1,4 +1,5 @@
 import AppBar from "./AppBar.tsx";
+import Footer from "./Footer.tsx"
 import {Outlet} from "react-router";
 
 const Template = () => {
@@ -6,7 +7,7 @@ const Template = () => {
         <div>
             <AppBar/>
             <Outlet/>
-
+            <Footer/>
         </div>
     );
 };

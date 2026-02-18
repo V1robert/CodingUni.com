@@ -5,6 +5,7 @@ import ExoCard from "../components/common/ExoCard.tsx";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {useParams} from "react-router-dom";
 import {useNavigate} from "react-router";
+import {LANGUAGE_IMAGE_MAP} from "../../util/Languages.ts";
 
 const CoursePage = () => {
 
@@ -12,6 +13,7 @@ const CoursePage = () => {
     const languageId = useSelector((state: RootState) => state.language.id)
     const {data} = useGetCoursesQuery(languageId)
     const navigate = useNavigate()
+
 
     return (
         <Container fluid className="py-4 position-relative" style={{minHeight: "100vh"}}>
@@ -29,7 +31,7 @@ const CoursePage = () => {
                     data.map((corso) =>
                         <Col key={corso.courseId} xs={12} sm={6} md={4} lg={3} xl={2}
                              className="d-flex justify-content-center">
-                            <ExoCard cardImagePath={"../../public/assets/java-original.svg"}
+                            <ExoCard cardImagePath={LANGUAGE_IMAGE_MAP[language!]}
                                      cardTitle={corso.title}
                                      cardDescription={corso.description}/>
                         </Col>
