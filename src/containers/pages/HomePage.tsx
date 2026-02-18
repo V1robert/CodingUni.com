@@ -3,11 +3,12 @@ import {Link} from "react-router-dom"
 import {LANGUAGES} from "../../util/Languages.ts";
 import {useDispatch} from "react-redux";
 import {setLanguage} from "../../config/store/slices/LanguageSlice.ts";
+import {useTranslation} from "react-i18next";
 
 
 const HomePage = () => {
     const dispatch = useDispatch()
-
+    const {t} = useTranslation();
     return (
         <>
             {/* HERO SECTION */}
@@ -16,7 +17,7 @@ const HomePage = () => {
                     <Row className="align-items-center text-center text-md-start">
                         <Col md={8}>
                             <h1 className="display-4 fw-bold mb-3">
-                                Welcome to Coding University
+                                {t('welcome')}
                             </h1>
 
                             <p className="lead mb-4">

@@ -1,81 +1,82 @@
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 /* Navbar slightly darker than page */
 .theme-navbar {
-  background-color: var(--bg-navbar);
-  color: var(--text-primary);
-  padding: 1rem 2rem;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    background-color: var(--bg-navbar);
+    color: var(--text-primary);
+    padding: 1rem 2rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Brand */
 .theme-navbar .navbar-brand {
-  font-weight: 700;
-  font-size: 1.6rem;
-  color: #fff;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #fff;
 }
 
 /* Links */
 .theme-navbar .nav-link {
-  color: #e0e0e0 !important;
-  font-weight: 500;
-  margin-left: 1rem;
-  transition: color 0.2s;
+    color: #e0e0e0 !important;
+    font-weight: 500;
+    margin-left: 1rem;
+    transition: color 0.2s;
 }
 
 .theme-navbar .nav-link:hover {
-  color: #0d6efd !important; /* subtle accent hover */
+    color: #0d6efd !important; /* subtle accent hover */
 }
 
 
 /* HERO */
 .hero-section {
-  background: linear-gradient(135deg, #0d6efd, #6610f2);
+    background: linear-gradient(135deg, #121a45, #1023f2);
 }
 
 /* LANGUAGE ICONS */
 .language-logo {
-  transition: transform 0.2s ease, filter 0.2s ease;
+    transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .language-logo:hover {
-  transform: scale(1.1);
-  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.25));
+    transform: scale(1.1);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.25));
 }
 
 .feature-card {
-  background-color: var(--bg-surface);
-  color: var(--text-primary);
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-  height: 100%;
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    height: 100%;
 }
 
 .language-logo + div {
-  color: #fff;
+    color: #fff;
 }
 
 
 body {
-  margin: 0;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-color: var(--bg-main);
-  color: var(--text-secondary);
-  min-height: 100vh;
+    margin: 0;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-secondary);
+    min-height: 100vh;
 }
 
 /* ROOT APP CONTAINER */
 :root {
-  --bg-main: rgba(18, 18, 18, 0.63);
-  --bg-surface: rgba(0, 0, 0, 0.83);
-  --bg-navbar: rgba(0, 0, 0, 0.83);
+    --bg-main: rgba(18, 18, 18, 0.63);
+    --bg-surface: rgba(0, 0, 0, 0.83);
+    --bg-navbar: #1976d2;
 
-  --text-primary: #ffffff;
-  --text-secondary: #ffffff;
+    --text-primary: #ffffff;
+    --text-secondary: #ffffff;
 
-  --accent: #0d6efd;
+    --accent: #0d6efd;
 }
 

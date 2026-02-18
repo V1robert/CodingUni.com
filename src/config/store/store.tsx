@@ -1,7 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit"
-import { rootApi } from "../../api/rootApi"
+import {configureStore} from "@reduxjs/toolkit"
+import {rootApi} from "../../api/rootApi"
 import createRootReducer from "./slices"
-import { reduxBatch } from "@manaflair/redux-batch"
+import {reduxBatch} from "@manaflair/redux-batch"
 
 export const storeApp = configureStore({
     reducer: createRootReducer(),
@@ -15,5 +15,5 @@ export const storeApp = configureStore({
         getDefaultEnhancers().concat(reduxBatch),
 })
 
-export type RootState = ReturnType<typeof storeApp.getState>
+export type AppState = ReturnType<typeof storeApp.getState>
 export type AppDispatch = typeof storeApp.dispatch

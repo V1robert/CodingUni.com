@@ -1,6 +1,7 @@
 export interface UserDto {
     email: string
     password: string
+    preferredLanguage: string
 }
 
 export interface ProgrammingLanguage {

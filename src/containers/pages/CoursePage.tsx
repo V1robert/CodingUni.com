@@ -1,6 +1,6 @@
 import {useGetCoursesQuery} from "../../api/courseApi.ts";
 import {useSelector} from "react-redux";
-import type {RootState} from "../../config/store/store.tsx";
+import type {AppState} from "../../config/store/store.tsx";
 import ExoCard from "../components/common/ExoCard.tsx";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {useParams} from "react-router-dom";
@@ -10,7 +10,7 @@ import {LANGUAGE_IMAGE_MAP} from "../../util/Languages.ts";
 const CoursePage = () => {
 
     const {language} = useParams<{ language: string }>()
-    const languageId = useSelector((state: RootState) => state.language.id)
+    const languageId = useSelector((state: AppState) => state.language.id)
     const {data} = useGetCoursesQuery(languageId)
     const navigate = useNavigate()
 
