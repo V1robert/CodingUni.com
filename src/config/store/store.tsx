@@ -1,10 +1,20 @@
 import {configureStore} from "@reduxjs/toolkit"
 import {rootApi} from "../../api/rootApi"
 import createRootReducer from "./slices"
+import {persistReducer, persistStore} from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage
 import {reduxBatch} from "@manaflair/redux-batch"
 
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: ['language']
+};
+
+const persistedReducer = persistReducer(persistConfig, createRootReducer());
+
 export const storeApp = configureStore({
-    reducer: createRootReducer(),
+    reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false,
@@ -15,5 +25,6 @@ export const storeApp = configureStore({
         getDefaultEnhancers().concat(reduxBatch),
 })
 
+export const persistor = persistStore(storeApp);
 export type AppState = ReturnType<typeof storeApp.getState>
 export type AppDispatch = typeof storeApp.dispatch

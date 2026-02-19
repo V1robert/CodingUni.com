@@ -3,7 +3,7 @@ import {BASE_URL, IS_SVILUPPO} from "../util/Constants.ts";
 import type {AppState} from "../config/store/store"
 
 export const rootApi = createApi({
-    reducerPath: "root",
+    reducerPath: "api",
     baseQuery: fetchBaseQuery({
         baseUrl: BASE_URL,
         credentials: "include",

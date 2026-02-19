@@ -1,11 +1,13 @@
 import {useGetCoursesQuery} from "../../api/courseApi.ts";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import type {AppState} from "../../config/store/store.tsx";
 import ExoCard from "../components/common/ExoCard.tsx";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {useParams} from "react-router-dom";
 import {useNavigate} from "react-router";
 import {LANGUAGE_IMAGE_MAP} from "../../util/Languages.ts";
+import {useEffect} from "react";
+import {setCourse} from "../../config/store/slices/courseSlice.ts";
 
 const CoursePage = () => {
 
@@ -14,6 +16,11 @@ const CoursePage = () => {
     const {programmingLanguage} = useParams<{ programmingLanguage: string }>()
     const {data} = useGetCoursesQuery({programmingLanguageId: languageId, language: userPreferredLanguage})
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(setCourse(data!))
+    }, [data, dispatch]);
 
 
     return (

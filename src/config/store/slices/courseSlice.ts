@@ -1,23 +1,16 @@
 import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
 import type {Course} from "../../../types/types.ts";
 
-export const emptyCourse: Course = {
-    language: "",
-    languageId: 0,
-    courseId: 0,
-    order: 0,
-    description: "",
-    title: ""
-}
+export const emptyCourses: Course[] = []
 const courseSlice = createSlice({
     name: "course",
-    initialState: emptyCourse,
+    initialState: emptyCourses,
     reducers: {
-        setCourse: (_state, action: PayloadAction<Course>) => {
+        setCourse: (_state, action: PayloadAction<Course[]>) => {
             return action.payload
         },
         clearCourse: () => {
-            return emptyCourse
+            return emptyCourses
         }
     }
 })
