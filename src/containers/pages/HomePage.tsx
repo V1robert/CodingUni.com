@@ -51,17 +51,21 @@ const HomePage = () => {
                     </Row>
 
                     <Row className="g-4 justify-content-center">
-                        {LANGUAGES.map((lang) => (
+                        {LANGUAGES.map((lang, index) => ( // Add 'index' here
                             <Col
                                 key={lang.id}
                                 xs={6}
                                 sm={4}
                                 md={3}
                                 lg={2}
-                                className="text-center"
+                                className="text-center fade-in-item"
+                                style={{animationDelay: `${index * 0.2}s`}}
                             >
-                                <Link onClick={() => dispatch(setLanguage({id: lang.id, name: lang.name, src: ""}))}
-                                      to={`/courses/${lang.name}`} className="text-decoration-none">
+                                <Link
+                                    onClick={() => dispatch(setLanguage({id: lang.id, name: lang.name, src: ""}))}
+                                    to={`/courses/${lang.name}`}
+                                    className="text-decoration-none"
+                                >
                                     <img
                                         src={lang.src}
                                         alt={lang.name}
