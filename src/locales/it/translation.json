@@ -1,5 +1,8 @@
 {
-  "welcome": "Benvenuto in Coding University",
+  "hero-welcome": "Benvenuto in Coding University",
+  "hero-learn": "Inizia a imparare",
+  "hero-sign in": "Accedi",
   "login": "Accesso",
-  "logout": "Disconnettersi"
+  "logout": "Disconnettersi",
+  "homepage-description": "lorem ipsum"
 }

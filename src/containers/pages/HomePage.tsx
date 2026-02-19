@@ -17,21 +17,20 @@ const HomePage = () => {
                     <Row className="align-items-center text-center text-md-start">
                         <Col md={8}>
                             <h1 className="display-4 fw-bold mb-3">
-                                {t('welcome')}
+                                {t('hero-welcome')}
                             </h1>
 
                             <p className="lead mb-4">
-                                Learn to code through interactive lessons, real code execution,
-                                and structured learning paths.
+                                {t('homepage-description')}
                             </p>
 
                             <div className="d-flex justify-content-center justify-content-md-start gap-3">
                                 <Link to="/courses" className="btn btn-primary btn-lg">
-                                    Start Learning
+                                    {t('hero-learn')}
                                 </Link>
 
                                 <Link to="/login" className="btn btn-outline-light btn-lg">
-                                    Sign In
+                                    {t('hero-sign in')}
                                 </Link>
                             </div>
                         </Col>
@@ -77,7 +76,7 @@ const HomePage = () => {
                 </Container>
             </section>
 
-            {/* FEATURES SECTION */}
+            {/* FEATURES SECTION
             <section className="py-5">
                 <Container>
                     <Row className="text-center mb-4">
@@ -120,6 +119,7 @@ const HomePage = () => {
                     </Row>
                 </Container>
             </section>
+            */}
         </>
     )
 }

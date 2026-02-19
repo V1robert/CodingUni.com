@@ -1,5 +1,8 @@
 {
-  "welcome": "Welcome to Coding University",
+  "hero-welcome": "Welcome to Coding University",
+  "hero-learn": "Start Learning",
+  "hero-sign in": "Sign in",
   "login": "Login",
-  "logout": "Logout"
+  "logout": "Logout",
+  "homepage-description": "Learn to code through interactive lessons, real code execution,\n                                and structured learning paths."
 }
