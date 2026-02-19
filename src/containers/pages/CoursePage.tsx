@@ -9,10 +9,10 @@ import {LANGUAGE_IMAGE_MAP} from "../../util/Languages.ts";
 
 const CoursePage = () => {
 
-    const {programmingLanguage} = useParams<{ programmingLanguage: string }>()
-    console.log(programmingLanguage)
+    const userPreferredLanguage = useSelector((state: AppState) => state.user.preferredLanguage);
     const languageId = useSelector((state: AppState) => state.language.id)
-    const {data} = useGetCoursesQuery({programmingLanguageId: languageId, language: 'en'})
+    const {programmingLanguage} = useParams<{ programmingLanguage: string }>()
+    const {data} = useGetCoursesQuery({programmingLanguageId: languageId, language: userPreferredLanguage})
     const navigate = useNavigate()
 
 
