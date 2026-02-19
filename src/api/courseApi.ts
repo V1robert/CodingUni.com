@@ -4,11 +4,11 @@ import {COURSE_URL} from "../util/ApiConstants.ts";
 
 const courseApi = rootApi.injectEndpoints({
     endpoints: (builder) => ({
-        getCourses: builder.query<Course[], number>({
-            query: (linguaggioId) => ({
+        getCourses: builder.query<Course[], { programmingLanguageId: number; language: string }>({
+            query: ({programmingLanguageId, language}) => ({
                 url: COURSE_URL,
                 method: "GET",
-                params: {linguaggioId}
+                params: {programmingLanguageId, language}
             }),
             providesTags: ["COURSE"]
         })

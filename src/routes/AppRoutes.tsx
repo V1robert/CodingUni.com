@@ -14,7 +14,7 @@ export const AppRoutes = createBrowserRouter([
                     element: <HomePage/>,
                 },
                 {
-                    path: "/courses/:language",
+                    path: "/courses/:programmingLanguage",
                     element: <CoursePage/>,
                 }
             ]

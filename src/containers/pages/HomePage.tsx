@@ -2,7 +2,7 @@ import {Col, Container, Row} from "react-bootstrap"
 import {Link} from "react-router-dom"
 import {LANGUAGES} from "../../util/Languages.ts";
 import {useDispatch} from "react-redux";
-import {setLanguage} from "../../config/store/slices/LanguageSlice.ts";
+import {setLanguage} from "../../config/store/slices/languageSlice.ts";
 import {useTranslation} from "react-i18next";
 
 

@@ -13,9 +13,10 @@ export interface ProgrammingLanguage {
 export interface Course {
     courseId: number
     languageId: number
+    order: number
     title: string
     description: string
-    imagePath: string
+    language: string
 
 }
 

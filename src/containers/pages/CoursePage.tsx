@@ -9,9 +9,10 @@ import {LANGUAGE_IMAGE_MAP} from "../../util/Languages.ts";
 
 const CoursePage = () => {
 
-    const {language} = useParams<{ language: string }>()
+    const {programmingLanguage} = useParams<{ programmingLanguage: string }>()
+    console.log(programmingLanguage)
     const languageId = useSelector((state: AppState) => state.language.id)
-    const {data} = useGetCoursesQuery(languageId)
+    const {data} = useGetCoursesQuery({programmingLanguageId: languageId, language: 'en'})
     const navigate = useNavigate()
 
 
@@ -20,7 +21,7 @@ const CoursePage = () => {
             <Row className="justify-content-center mb-5">
                 <Col xs={12} className="text-center">
                     <h1 className="display-4 fw-bold text-primary mb-2">
-                        Welcome to the <span className="text-capitalize">{language}</span> course!
+                        Welcome to the <span className="text-capitalize">{programmingLanguage}</span> course!
                     </h1>
                     <p className="lead text-muted">Explore our courses and start learning today.</p>
                 </Col>
@@ -31,7 +32,7 @@ const CoursePage = () => {
                     data.map((corso) =>
                         <Col key={corso.courseId} xs={12} sm={6} md={4} lg={3} xl={2}
                              className="d-flex justify-content-center">
-                            <ExoCard cardImagePath={LANGUAGE_IMAGE_MAP[language!]}
+                            <ExoCard cardImagePath={LANGUAGE_IMAGE_MAP[programmingLanguage!]}
                                      cardTitle={corso.title}
                                      cardDescription={corso.description}/>
                         </Col>
