@@ -2,6 +2,7 @@ import {createBrowserRouter} from "react-router"
 import HomePage from "../containers/pages/HomePage.tsx";
 import Template from "../layout/Template.tsx";
 import CoursePage from "../containers/pages/CoursePage.tsx";
+import LessonPage from "../containers/pages/LessonPage.tsx";
 
 export const AppRoutes = createBrowserRouter([
         {
@@ -16,10 +17,12 @@ export const AppRoutes = createBrowserRouter([
                 {
                     path: "/courses/:programmingLanguage",
                     element: <CoursePage/>,
+                },
+                {
+                    path: "/lessons",
+                    element: <LessonPage/>,
                 }
             ]
         },
     ]
 )
-
-

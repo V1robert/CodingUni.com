@@ -3,6 +3,7 @@ import {rootApi} from "../../../api/rootApi.ts";
 import userSlice from "./userSlice.ts";
 import languageSlice from "./languageSlice.ts";
 import courseSlice from "./courseSlice.ts";
+import lessonSlice from "./lessonSlice.ts";
 
 const createRootReducer = () =>
     combineReducers({
@@ -10,6 +11,7 @@ const createRootReducer = () =>
         user: userSlice,
         language: languageSlice,
         course: courseSlice,
+        lesson: lessonSlice,
     })
 
 export default createRootReducer

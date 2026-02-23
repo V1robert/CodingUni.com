@@ -8,19 +8,36 @@ import {useNavigate} from "react-router";
 import {LANGUAGE_IMAGE_MAP} from "../../util/Languages.ts";
 import {useEffect} from "react";
 import {setCourse} from "../../config/store/slices/courseSlice.ts";
+import {setLessons} from "../../config/store/slices/lessonSlice.ts";
+import type {Course} from "../../types/types.ts";
+import {useLazyGetLessonQuery} from "../../api/lessonApi.ts";
 
 const CoursePage = () => {
 
     const userPreferredLanguage = useSelector((state: AppState) => state.user.preferredLanguage);
     const languageId = useSelector((state: AppState) => state.language.id)
     const {programmingLanguage} = useParams<{ programmingLanguage: string }>()
-    const {data} = useGetCoursesQuery({programmingLanguageId: languageId, language: userPreferredLanguage})
+    const {data: coursesData} = useGetCoursesQuery({programmingLanguageId: languageId, language: userPreferredLanguage})
+    const [trigger, {data: lessonsData}] = useLazyGetLessonQuery()
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
+    function goToLessons(courseId: number) {
+        trigger({courseId, programmingLanguageId: languageId, language: userPreferredLanguage})
+    }
+
     useEffect(() => {
-        dispatch(setCourse(data!))
-    }, [data, dispatch]);
+        if (lessonsData) {
+            dispatch(setLessons(lessonsData))
+            navigate(`/lessons`)
+        }
+    }, [lessonsData, navigate, dispatch]);
+
+    useEffect(() => {
+        if (coursesData) {
+            dispatch(setCourse(coursesData))
+        }
+    }, [coursesData, dispatch]);
 
 
     return (
@@ -35,12 +52,14 @@ const CoursePage = () => {
             </Row>
 
             <Row className="justify-content-center g-4">
-                {Array.isArray(data) && data.length > 0 &&
-                    data.map((corso) =>
+                {Array.isArray(coursesData) && coursesData.length > 0 &&
+                    coursesData.map((corso:Course) =>
                         <Col key={corso.courseId} xs={12} sm={6} md={4} lg={3} xl={2}
                              className="d-flex justify-content-center">
                             <ExoCard cardImagePath={LANGUAGE_IMAGE_MAP[programmingLanguage!]}
                                      cardTitle={corso.title}
+                                     id={corso.courseId}
+                                     callback={() => goToLessons(corso.courseId)}
                                      cardDescription={corso.description}/>
                         </Col>
                     )}

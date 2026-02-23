@@ -2,7 +2,10 @@ import {Button, Card} from "react-bootstrap"
 import type {ExoCardType} from "../../../types/types.ts"
 
 const ExoCard = (exoCard: ExoCardType) => {
+
+
     return (
+
         <Card
             className="h-100 d-flex flex-column shadow-sm rounded-2 mx-auto"
             style={{maxWidth: "320px"}}   // bigger than before
@@ -33,6 +36,7 @@ const ExoCard = (exoCard: ExoCardType) => {
 
                 <div className="text-center mt-auto">
                     <Button
+                        onClick={exoCard.callback}
                         variant="primary"
                         size="lg"
                         className="px-4"

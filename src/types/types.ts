@@ -19,9 +19,20 @@ export interface Course {
     language: string
 
 }
-
+export interface Lesson {
+    languageId: number
+    courseId: number
+    lessonId: number
+    order: number
+    title: string
+    description: string
+    language: string
+}
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface ExoCardType {
     cardImagePath?: string
     cardTitle: string
+    id?:number
+    callback?: (value?: any) => void
     cardDescription: string
 }
