@@ -1,6 +1,6 @@
 import {Col, Container, Row} from "react-bootstrap"
 import {Link} from "react-router-dom"
-import {LANGUAGES} from "../../util/Languages.ts";
+import {Languages} from "../../util/Languages.ts";
 import {useDispatch} from "react-redux";
 import {setLanguage} from "../../config/store/slices/languageSlice.ts";
 import {useTranslation} from "react-i18next";
@@ -51,7 +51,7 @@ const HomePage = () => {
                     </Row>
 
                     <Row className="g-4 justify-content-center">
-                        {LANGUAGES.map((lang, index) => ( // Add 'index' here
+                        {Languages.map((lang, index) => ( // Add 'index' here
                             <Col
                                 key={lang.id}
                                 xs={6}

@@ -1,4 +1,4 @@
-import {Col, Container, Form, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import {
     FaEnvelope,
     FaFacebook,
@@ -10,20 +10,10 @@ import {
     FaPrint,
     FaTwitter,
 } from "react-icons/fa";
-import {useDispatch, useSelector} from "react-redux";
-import {setPreferredLanguage} from "../config/store/slices/userSlice.ts";
-import type {AppState} from "../config/store/store.tsx";
+import ChangeLanguages from "../containers/components/common/ChangeLanguages.tsx";
 
-/* Available languages for the language switcher */
-const LANGUAGES = [
-    {code: "en", label: "English"},
-    {code: "it", label: "Italiano"},
-    {code: "fr", label: "Français"},
-];
 
 const Footer = () => {
-    const dispatch = useDispatch();
-    const currentLanguage = useSelector((state: AppState) => state.user.preferredLanguage);
     return (
         <footer
             style={{
@@ -141,22 +131,7 @@ const Footer = () => {
                             <FaGlobe className="me-2"/>
                             Language
                         </h5>
-
-                        {/* Language dropdown — user selects from a list of available languages */}
-                        <Form.Select
-                            size="sm"
-                            value={currentLanguage}
-                            onChange={(e) => dispatch(setPreferredLanguage(e.target.value))}
-                            aria-label="Select language"
-                            className="mx-auto"
-                            style={{maxWidth: "160px"}}
-                        >
-                            {LANGUAGES.map((lang) => (
-                                <option key={lang.code} value={lang.code}>
-                                    {lang.label}
-                                </option>
-                            ))}
-                        </Form.Select>
+                        <ChangeLanguages/>
                     </Col>
                 </Row>
 

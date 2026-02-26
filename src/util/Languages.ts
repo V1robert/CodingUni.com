@@ -8,7 +8,7 @@ import htmlLogo from "../assets/html5.svg";
 import cssLogo from "../assets/css3.svg";
 import type {ProgrammingLanguage} from "../types/types.ts";
 
-export const LANGUAGES: ProgrammingLanguage[] = [
+export const PROGRAMMING_LANGUAGES: ProgrammingLanguage[] = [
     {name: "HTML5", id: 0, src: htmlLogo},
     {name: "CSS3", id: 1, src: cssLogo},
     {name: "JavaScript", id: 2, src: jsLogo,},
@@ -19,8 +19,13 @@ export const LANGUAGES: ProgrammingLanguage[] = [
     {name: "MySQL", id: 7, src: mysqlLogo},
 
 ]
-
-export const LANGUAGE_IMAGE_MAP: Record<string, string> =
+/* Available languages for the language switcher */
+export const LANGUAGES = [
+    {code: "en", label: "English"},
+    {code: "it", label: "Italiano"},
+    {code: "fr", label: "Français"},
+];
+export const PROGRAMMING_LANGUAGE_IMAGE_MAP: Record<string, string> =
     Object.fromEntries(
-        LANGUAGES.map(lang => [lang.name, lang.src])
+        PROGRAMMING_LANGUAGES.map(lang => [lang.name, lang.src])
     );
