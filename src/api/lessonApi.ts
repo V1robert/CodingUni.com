@@ -4,11 +4,11 @@ import {LESSON_URL} from "../util/ApiConstants.ts";
 
 const lessonApi = rootApi.injectEndpoints({
     endpoints: (builder) => ({
-        getLesson: builder.query<Lesson[], { courseId: number; programmingLanguageId: number; language: string }>({
-            query: ({courseId, programmingLanguageId, language}) => ({
+        getLesson: builder.query<Lesson[], { courseId: number; programmingLanguage: string; language: string }>({
+            query: ({courseId, programmingLanguage, language}) => ({
                 url: LESSON_URL,
                 method: "GET",
-                params: {courseId, programmingLanguageId, language}
+                params: {courseId, programmingLanguage, language}
             }),
             providesTags: ["LESSON"]
         })
@@ -16,4 +16,4 @@ const lessonApi = rootApi.injectEndpoints({
     })
 })
 
-export const {useLazyGetLessonQuery} = lessonApi
+export const {useGetLessonQuery} = lessonApi

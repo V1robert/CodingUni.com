@@ -8,30 +8,25 @@ import {useNavigate} from "react-router";
 import {LANGUAGE_IMAGE_MAP} from "../../util/Languages.ts";
 import {useEffect} from "react";
 import {setCourse} from "../../config/store/slices/courseSlice.ts";
-import {setLessons} from "../../config/store/slices/lessonSlice.ts";
 import type {Course} from "../../types/types.ts";
-import {useLazyGetLessonQuery} from "../../api/lessonApi.ts";
 
 const CoursePage = () => {
 
     const userPreferredLanguage = useSelector((state: AppState) => state.user.preferredLanguage);
-    const languageId = useSelector((state: AppState) => state.language.id)
-    const {programmingLanguage} = useParams<{ programmingLanguage: string }>()
-    const {data: coursesData} = useGetCoursesQuery({programmingLanguageId: languageId, language: userPreferredLanguage})
-    const [trigger, {data: lessonsData}] = useLazyGetLessonQuery()
+    const {programmingLanguage} = useParams()
+
+    const {data: coursesData} = useGetCoursesQuery({
+        programmingLanguage: programmingLanguage as string,
+        language: userPreferredLanguage
+    })
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    function goToLessons(courseId: number) {
-        trigger({courseId, programmingLanguageId: languageId, language: userPreferredLanguage})
-    }
 
-    useEffect(() => {
-        if (lessonsData) {
-            dispatch(setLessons(lessonsData))
-            navigate(`/lessons`)
-        }
-    }, [lessonsData, navigate, dispatch]);
+    function goToLessons(courseId: number) {
+        navigate(`${courseId}/lessons`)
+    }
 
     useEffect(() => {
         if (coursesData) {

@@ -63,7 +63,7 @@ const HomePage = () => {
                             >
                                 <Link
                                     onClick={() => dispatch(setLanguage({id: lang.id, name: lang.name, src: ""}))}
-                                    to={`/courses/${lang.name}`}
+                                    to={`/${lang.name}/courses/`}
                                     className="text-decoration-none"
                                 >
                                     <img

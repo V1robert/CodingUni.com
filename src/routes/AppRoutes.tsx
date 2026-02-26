@@ -15,11 +15,12 @@ export const AppRoutes = createBrowserRouter([
                     element: <HomePage/>,
                 },
                 {
-                    path: "/courses/:programmingLanguage",
+                    path: ":programmingLanguage/courses/",
                     element: <CoursePage/>,
+
                 },
                 {
-                    path: "/lessons",
+                    path: ":programmingLanguage/courses/:courseId/lessons",
                     element: <LessonPage/>,
                 }
             ]

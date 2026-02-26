@@ -15,9 +15,12 @@ const userSlice = createSlice({
         },
         clearUser: () => {
             return emptyUser
+        },
+        setPreferredLanguage: (state, action: PayloadAction<string>) => {
+            state.preferredLanguage = action.payload
         }
     }
 })
 
-export const {setUser, clearUser} = userSlice.actions
+export const {setUser, clearUser, setPreferredLanguage} = userSlice.actions
 export default userSlice.reducer

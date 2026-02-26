@@ -2,12 +2,20 @@ import {useSelector} from "react-redux";
 import type {AppState} from "../../config/store/store.tsx";
 import {Card, Col, Container, Row} from "react-bootstrap";
 import type {Lesson} from "../../types/types.ts";
-import {useNavigate} from "react-router";
+import {useGetLessonQuery} from "../../api/lessonApi.ts";
+import {useParams} from "react-router";
 
 const LessonPage = () => {
-    const lessons = useSelector((state: AppState) => state.lesson)
-    const programmingLanguage = useSelector((state: AppState) => state.language.name)
-    const navigate = useNavigate()
+    const {programmingLanguage, courseId} = useParams();
+    const userPreferredLanguage = useSelector((state: AppState) => state.user.preferredLanguage);
+
+    const {data: lessons} = useGetLessonQuery({
+        courseId: Number(courseId),
+        programmingLanguage: programmingLanguage as string,
+        language: userPreferredLanguage
+    })
+    //const navigate = useNavigate()
+
 
     const handleLessonClick = (lesson: Lesson) => {
         console.log("Lesson clicked:", lesson.lessonId)
