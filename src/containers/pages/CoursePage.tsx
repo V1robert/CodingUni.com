@@ -5,7 +5,7 @@ import ExoCard from "../components/common/ExoCard.tsx";
 import {Col, Container, Row} from "react-bootstrap";
 import {useParams} from "react-router-dom";
 import {useNavigate} from "react-router";
-import {LANGUAGE_IMAGE_MAP} from "../../util/Languages.ts";
+import {PROGRAMMING_LANGUAGE_IMAGE_MAP} from "../../util/Languages.ts";
 import {useEffect} from "react";
 import {setCourse} from "../../config/store/slices/courseSlice.ts";
 import type {Course} from "../../types/types.ts";
@@ -51,7 +51,7 @@ const CoursePage = () => {
                     coursesData.map((corso: Course) =>
                         <Col key={corso.courseId} xs={12} sm={6} md={4} lg={3} xl={2}
                              className="d-flex justify-content-center">
-                            <ExoCard cardImagePath={LANGUAGE_IMAGE_MAP[programmingLanguage!]}
+                            <ExoCard cardImagePath={PROGRAMMING_LANGUAGE_IMAGE_MAP[programmingLanguage!]}
                                      cardTitle={corso.title}
                                      id={corso.courseId}
                                      callback={() => goToLessons(corso.courseId)}

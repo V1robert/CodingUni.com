@@ -4,6 +4,7 @@ import userSlice from "./userSlice.ts";
 import languageSlice from "./languageSlice.ts";
 import courseSlice from "./courseSlice.ts";
 import lessonSlice from "./lessonSlice.ts";
+import exerciseSlice from "./exerciseSlice.ts";
 
 const createRootReducer = () =>
     combineReducers({
@@ -12,6 +13,7 @@ const createRootReducer = () =>
         language: languageSlice,
         course: courseSlice,
         lesson: lessonSlice,
+        exercise: exerciseSlice
     })
 
 export default createRootReducer

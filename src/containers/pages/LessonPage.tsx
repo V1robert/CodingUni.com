@@ -3,22 +3,24 @@ import type {AppState} from "../../config/store/store.tsx";
 import {Card, Col, Container, Row} from "react-bootstrap";
 import type {Lesson} from "../../types/types.ts";
 import {useGetLessonQuery} from "../../api/lessonApi.ts";
-import {useParams} from "react-router";
+import {useNavigate, useParams} from "react-router";
 
 const LessonPage = () => {
     const {programmingLanguage, courseId} = useParams();
     const userPreferredLanguage = useSelector((state: AppState) => state.user.preferredLanguage);
+    const navigate = useNavigate()
 
     const {data: lessons} = useGetLessonQuery({
         courseId: Number(courseId),
         programmingLanguage: programmingLanguage as string,
         language: userPreferredLanguage
     })
-    //const navigate = useNavigate()
 
 
     const handleLessonClick = (lesson: Lesson) => {
         console.log("Lesson clicked:", lesson.lessonId)
+        navigate(`${lesson.lessonId}/exercise`)
+
     }
 
     return (

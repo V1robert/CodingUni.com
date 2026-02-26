@@ -18,9 +18,12 @@ const userSlice = createSlice({
         },
         setPreferredLanguage: (state, action: PayloadAction<string>) => {
             state.preferredLanguage = action.payload
+        },
+        setIsStudying: (state, action: PayloadAction<boolean>) => {
+            state.isStudying = action.payload
         }
     }
 })
 
-export const {setUser, clearUser, setPreferredLanguage} = userSlice.actions
+export const {setUser, clearUser, setPreferredLanguage, setIsStudying} = userSlice.actions
 export default userSlice.reducer
