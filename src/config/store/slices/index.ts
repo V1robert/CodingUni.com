@@ -1,5 +1,6 @@
 import {combineReducers} from "redux"
 import {rootApi} from "../../../api/rootApi.ts";
+import {compilerApi} from "../../../api/compilerApi.ts";
 import userSlice from "./userSlice.ts";
 import languageSlice from "./languageSlice.ts";
 import courseSlice from "./courseSlice.ts";
@@ -9,6 +10,7 @@ import exerciseSlice from "./exerciseSlice.ts";
 const createRootReducer = () =>
     combineReducers({
         [rootApi.reducerPath]: rootApi.reducer,
+        [compilerApi.reducerPath]: compilerApi.reducer,
         user: userSlice,
         language: languageSlice,
         course: courseSlice,

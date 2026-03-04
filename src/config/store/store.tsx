@@ -1,5 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit"
 import {rootApi} from "../../api/rootApi"
+import {compilerApi} from "../../api/compilerApi.ts"
 import createRootReducer from "./slices"
 import {persistReducer, persistStore} from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage
@@ -19,7 +20,7 @@ export const storeApp = configureStore({
         getDefaultMiddleware({
             serializableCheck: false,
             immutableCheck: false,
-        }).concat(rootApi.middleware),
+        }).concat(rootApi.middleware, compilerApi.middleware),
     devTools: true,
     enhancers: (getDefaultEnhancers) =>
         getDefaultEnhancers().concat(reduxBatch),

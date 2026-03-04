@@ -11,7 +11,7 @@ import QuizComponent from "../components/exercise/QuizComponent.tsx";
 import ProgressBarComponent from "../components/ProgressBarComponent.tsx";
 import {setExerciseProgress} from "../../config/store/slices/exerciseSlice.ts";
 import {SlArrowLeft} from "react-icons/sl";
-import ButtonProdEner from "../components/ButtonProdEner.tsx";
+import ButtonProdEner from "../components/common/ButtonProdEner.tsx";
 
 const ExercisePage = () => {
 

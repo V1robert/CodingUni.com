@@ -1,6 +1,6 @@
 import {ProgressBar} from "react-bootstrap";
 import {SlArrowLeft, SlArrowRight} from "react-icons/sl";
-import ButtonProdEner from "./ButtonProdEner.tsx";
+import ButtonProdEner from "./common/ButtonProdEner.tsx";
 
 interface ProgressBarComponentProps {
     now: number;
