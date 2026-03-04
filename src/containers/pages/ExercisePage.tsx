@@ -93,7 +93,7 @@ const ExercisePage = () => {
             </ButtonProdEner>
 
             <div className="container d-flex flex-column flex-grow-1 pt-4">
-                {exercises && exercises.length > 0 && (
+                {exercises && exercises.length > 0 && exercises[exerciseProgress].type !== 'compiler' && (
                     <ProgressBarComponent
                         now={((exerciseProgress + 1) / exercises.length) * 100}
                         onNext={handleNext}
