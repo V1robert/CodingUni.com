@@ -75,7 +75,7 @@ const ExercisePage = () => {
     useEffect(() => {
         // 1. When the component mounts, set isStudying to true
         dispatch(setIsStudying(true));
-        // It runs automatically when the component unmounts (user leaves the page).
+        // It runs automatically when the component unmounts (the user leaves the page).
         return () => {
             dispatch(setIsStudying(false));
         };

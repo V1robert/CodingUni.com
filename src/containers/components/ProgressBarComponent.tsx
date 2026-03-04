@@ -12,17 +12,17 @@ interface ProgressBarComponentProps {
 
 const ProgressBarComponent = ({now, onNext, onPrev, canNext, canPrev}: ProgressBarComponentProps) => {
     return (
-        <div className="d-flex align-items-center gap-3 my-4">
+        <div className="d-flex align-items-center gap-3 my-4 mx-auto w-100" style={{maxWidth: '600px'}}>
             <ButtonProdEner
                 onClick={onPrev}
                 disabled={!canPrev}
                 className="btn-progress-arrow"
             >
-                <SlArrowLeft size={24}/>
+                <SlArrowLeft size={18}/>
             </ButtonProdEner>
 
             <div className="flex-grow-1">
-                <ProgressBar animated now={now}/>
+                <ProgressBar animated now={now} style={{height: "8px"}}/>
             </div>
 
             <ButtonProdEner
@@ -30,7 +30,7 @@ const ProgressBarComponent = ({now, onNext, onPrev, canNext, canPrev}: ProgressB
                 disabled={!canNext}
                 className="btn-progress-arrow"
             >
-                <SlArrowRight size={24}/>
+                <SlArrowRight size={18}/>
             </ButtonProdEner>
         </div>
     );
