@@ -23,6 +23,7 @@ export interface Course {
 
 export type CompilerResponse = {
     data: string
+    httpCode: number
 }
 
 export interface ExerciseSlice {

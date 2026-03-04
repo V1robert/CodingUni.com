@@ -136,3 +136,23 @@ body {
     opacity: 1;
     cursor: pointer;
 }
+
+@media (min-width: 992px) {
+    .border-lg-end {
+        border-right: 1px solid #dee2e6 !important;
+    }
+
+    .border-lg-top-0 {
+        border-top: 0 !important;
+    }
+
+    .border-lg-bottom-0 {
+        border-bottom: 0 !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .border-sm-bottom {
+        border-bottom: 1px solid #dee2e6 !important;
+    }
+}
