@@ -28,7 +28,14 @@ export interface ExerciseSlice {
 
 export interface Exercise extends Lesson {
     exerciseId: number
+    question?: string
+    type: string
+    answers?: Answer[]
+}
 
+export interface Answer {
+    id: number
+    text: string
 }
 
 export interface Lesson extends Course {

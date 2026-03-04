@@ -18,6 +18,6 @@ export const rootApi = createApi({
             return headers
         }
     }),
-    tagTypes: ["USER", "COURSE","LESSON"],
+    tagTypes: ["USER", "COURSE", "LESSON", "EXERCISE"],
     endpoints: () => ({})
 })
