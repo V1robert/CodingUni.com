@@ -1,32 +1,41 @@
-import type {ReactNode} from "react";
+import type {ButtonHTMLAttributes, MouseEvent, ReactNode} from "react";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-interface ButtonProdEnerProps {
+interface ButtonProdEnerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     name?: string
     title?: string
-    type: "submit" | "reset" | "button"
-    className: string
     callback?: (value?: any) => void
     icon?: string
     paddingIcon?: string
-    disabled?: boolean
     children?: ReactNode
 }
 
 
 const ButtonProdEner = ({
                             title,
-                            type,
                             className,
                             callback,
+                            onClick,
                             icon,
                             name,
                             paddingIcon,
-                            disabled,
-                            children
+                            children,
+                            ...rest
                         }: ButtonProdEnerProps) => {
+
+    const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+        if (callback) callback(e);
+        if (onClick) onClick(e);
+    };
+
     return (
-        <button title={title} type={`${type}`} disabled={disabled} className={className} onClick={callback}>
+        <button
+            type="button"
+            {...rest}
+            title={title}
+            className={className}
+            onClick={handleClick}
+        >
             {name}
             {children}
             {icon && <i className={icon + ` ${paddingIcon}`}></i>}
