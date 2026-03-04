@@ -1,6 +1,8 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {COMPILER_URL} from "../util/Constants.ts";
 import {JAVA_COMPILER_URL} from "../util/ApiConstants.ts";
+import type {CompilerResponse} from "../types/types.ts";
+
 
 export const compilerApi = createApi({
     reducerPath: "compilerApi",
@@ -9,7 +11,7 @@ export const compilerApi = createApi({
         credentials: "include",
     }),
     endpoints: (builder) => ({
-        getJavaOutput: builder.query<string, string>({
+        getJavaOutput: builder.query<CompilerResponse, string>({
             query: (code) => ({
                 url: JAVA_COMPILER_URL,
                 method: "POST",

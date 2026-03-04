@@ -21,6 +21,10 @@ export interface Course {
 
 }
 
+export type CompilerResponse = {
+    data: string
+}
+
 export interface ExerciseSlice {
     exercises: Exercise[]
     exerciseProgress: number

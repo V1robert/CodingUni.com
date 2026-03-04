@@ -13,14 +13,13 @@ const CodeEditor = () => {
     const [trigger, {data, isFetching, error}] = useLazyGetJavaOutputQuery()
 
     async function handleRun() {
-        trigger(code)
+        const response = await trigger(code)
+        console.log(response.data)
     }
 
     useEffect(() => {
-        if (error) {
-            console.error(error)
-        }
-    }, [error]);
+        console.log(data)
+    }, [data, error]);
 
     const handleEditorChange = (value: string | undefined) => {
         if (value !== undefined) {
@@ -71,8 +70,8 @@ const CodeEditor = () => {
                 className="flex-grow-1 p-3 bg-light overflow-auto"
                 style={{minWidth: "300px"}}
             >
-                <h5 className="border-bottom pb-2">Output:</h5>
-                <pre className="mt-3" style={{whiteSpace: "pre-wrap"}}>{data}</pre>
+                <h5 className="border-bottom pb-2">Output: </h5>
+                <pre className="mt-3">{data?.data}</pre>
             </div>
         </div>
     );
