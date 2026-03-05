@@ -24,7 +24,6 @@ const LessonPage = () => {
     const handleLessonClick = (lesson: Lesson) => {
         console.log("Lesson clicked:", lesson.lessonId)
         navigate(`${lesson.lessonId}/exercise`)
-
     }
 
     return (

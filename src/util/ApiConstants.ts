@@ -1,5 +1,6 @@
 export const COURSE_URL: string = "CourseRest/GetCourses"
 export const LESSON_URL: string = "LessonRest/GetLessons"
-export const EXERCISE_URL: string = "ExerciseRest/GetExercises"
-
+export const EXERCISE_URL: string = "ExerciseRest"
+export const EXERCISE_GET_EXERCISES: string = EXERCISE_URL + "/GetExercises"
+export const EXERCISE_CHECK_ANSWER_URL: string = EXERCISE_URL + "/GetExerciseAnswer"
 export const JAVA_COMPILER_URL: string = "CompilerRest/Java"
