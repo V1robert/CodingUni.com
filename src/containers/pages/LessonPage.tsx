@@ -9,6 +9,10 @@ const LessonPage = () => {
     const {programmingLanguage, courseId} = useParams();
     const userPreferredLanguage = useSelector((state: AppState) => state.user.preferredLanguage);
     const navigate = useNavigate()
+    const courseIndex = ((courseId ? Number(courseId) : 1) - 1);
+    const courseTitle = useSelector((state: AppState) =>
+        state.course[courseIndex]?.title
+    );
 
     const {data: lessons} = useGetLessonQuery({
         courseId: Number(courseId),
@@ -28,7 +32,7 @@ const LessonPage = () => {
             {/* TODO AGGIUNGERE TRADUZIONI*/}
             <Row className="justify-content-center mb-5">
                 <Col xs={12} className="text-center">
-                    <h1 className="display-4 fw-bold text-primary mb-2">{programmingLanguage} Lessons</h1>
+                    <h1 className="display-4 fw-bold text-primary mb-2">{courseTitle}</h1>
                     <p className="lead text-muted">Click on a lesson to get started.</p>
                 </Col>
             </Row>
