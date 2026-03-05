@@ -29,6 +29,7 @@ export type CompilerResponse = {
 export interface ExerciseSlice {
     exercises: Exercise[]
     exerciseProgress: number
+    isCorrectAnswer: boolean
 }
 
 export interface Exercise extends Lesson {

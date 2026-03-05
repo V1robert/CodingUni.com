@@ -16,6 +16,7 @@ import ButtonProdEner from "../components/common/ButtonProdEner.tsx";
 const ExercisePage = () => {
 
     const dispatch = useDispatch()
+    const correctAnswer = useSelector((state: AppState) => state.exercise.isCorrectAnswer)
     const navigate = useNavigate();
     const {programmingLanguage, courseId, lessonId} = useParams();
     const userPreferredLanguage = useSelector((state: AppState) => state.user.preferredLanguage);
@@ -26,6 +27,10 @@ const ExercisePage = () => {
         lessonId: Number(lessonId),
         language: userPreferredLanguage
     })
+
+    function disableButton(exerciseLength: number) {
+        return !correctAnswer && exerciseProgress >= exerciseLength - 1
+    }
 
     const handleNext = () => {
         if (exercises && exerciseProgress < exercises.length - 1) {
@@ -110,7 +115,7 @@ const ExercisePage = () => {
                         <ButtonProdEner
                             className="btn btn-primary btn-lg px-5 py-2"
                             onClick={handleNext}
-                            disabled={exerciseProgress >= exercises.length - 1}
+                            disabled={disableButton(exercises.length)}
                         >
                             Continue
                         </ButtonProdEner>

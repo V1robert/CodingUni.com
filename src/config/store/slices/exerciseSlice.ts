@@ -3,7 +3,8 @@ import type {Exercise, ExerciseSlice} from "../../../types/types.ts";
 
 export const emptyExercise: ExerciseSlice = {
     exercises: [],
-    exerciseProgress: 0
+    exerciseProgress: 0,
+    isCorrectAnswer: false
 }
 const exerciseSlice = createSlice({
     name: "exercise",
@@ -23,6 +24,9 @@ const exerciseSlice = createSlice({
         },
         clearExerciseProgress: (state) => {
             state.exerciseProgress = 0
+        },
+        setCorrectAnswer: (state, action: PayloadAction<boolean>) => {
+            state.isCorrectAnswer = action.payload
         }
     }
 })
@@ -31,6 +35,7 @@ export const {
     setExercises,
     clearExerciseSlice,
     clearExercises,
+    setCorrectAnswer,
     setExerciseProgress,
     clearExerciseProgress
 } = exerciseSlice.actions
