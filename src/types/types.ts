@@ -36,6 +36,7 @@ export interface Exercise extends Lesson {
     exerciseId: number
     question?: string
     type: string
+    template?: string
     answers?: Answer[]
     correctAnswerId?: number
 }
