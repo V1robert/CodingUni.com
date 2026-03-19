@@ -4,7 +4,8 @@ import type {UserDto} from "../../../types/types.ts";
 export const emptyUser: UserDto = {
     email: '',
     password: '',
-    preferredLanguage: "en"
+    preferredLanguage: "en",
+    token: ''
 }
 const userSlice = createSlice({
     name: "user",
@@ -21,9 +22,12 @@ const userSlice = createSlice({
         },
         setIsStudying: (state, action: PayloadAction<boolean>) => {
             state.isStudying = action.payload
+        },
+        setToken: (state, action: PayloadAction<string>) => {
+            state.token = action.payload
         }
     }
 })
 
-export const {setUser, clearUser, setPreferredLanguage, setIsStudying} = userSlice.actions
+export const {setUser, clearUser, setToken, setPreferredLanguage, setIsStudying} = userSlice.actions
 export default userSlice.reducer

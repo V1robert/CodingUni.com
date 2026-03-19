@@ -3,6 +3,7 @@ export interface UserDto {
     password: string
     preferredLanguage: string
     isStudying?: boolean
+    token?: string
 }
 
 export interface ProgrammingLanguage {
@@ -22,8 +23,11 @@ export interface Course {
 }
 
 export type CompilerResponse = {
-    data: string
-    httpCode: number
+    output: string
+    error: string
+}
+export type CompilerRequest = {
+    code: string
 }
 
 export interface ExerciseSlice {

@@ -4,6 +4,7 @@ import Template from "../layout/Template.tsx";
 import CoursePage from "../containers/pages/CoursePage.tsx";
 import LessonPage from "../containers/pages/LessonPage.tsx";
 import ExercisePage from "../containers/pages/ExercisePage.tsx";
+import Login from "../containers/pages/Login.tsx";
 
 export const AppRoutes = createBrowserRouter([
         {
@@ -27,7 +28,12 @@ export const AppRoutes = createBrowserRouter([
                 {
                     path: ":programmingLanguage/courses/:courseId/lessons/:lessonId/exercise",
                     element: <ExercisePage/>
+                },
+                {
+                    path: "Login",
+                    element: <Login/>
                 }
+
             ]
         },
     ]

@@ -12,7 +12,6 @@ import ProgressBarComponent from "../components/ProgressBarComponent.tsx";
 import {setExerciseProgress} from "../../config/store/slices/exerciseSlice.ts";
 import {SlArrowLeft} from "react-icons/sl";
 import ButtonProdEner from "../components/common/ButtonProdEner.tsx";
-import CodeFillChallenge from "../components/exercise/CodeFillChallenge.tsx";
 
 const ExercisePage = () => {
 
@@ -63,8 +62,6 @@ const ExercisePage = () => {
                     return <CompilerComponent exercise={currentExercise}/>
                 case "quiz":
                     return <QuizComponent exercise={currentExercise}/>
-                case "codeChallenge":
-                    return <CodeFillChallenge exercise={currentExercise}/>
                 default:
                     return (
                         <div className="text-center py-5">
