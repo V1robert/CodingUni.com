@@ -5,6 +5,7 @@ import javaLogo from "../assets/java-original.svg";
 import mysqlLogo from "../assets/mysql.svg";
 import htmlLogo from "../assets/html5.svg";
 import cssLogo from "../assets/css3.svg";
+import pythonLogo from "../assets/python.png";
 import type {ProgrammingLanguage} from "../types/types.ts";
 
 export const PROGRAMMING_LANGUAGES: ProgrammingLanguage[] = [
@@ -16,6 +17,7 @@ export const PROGRAMMING_LANGUAGES: ProgrammingLanguage[] = [
     {name: "Java", id: 5, src: javaLogo},
     //{name: "Java EE", id: 6, src: javaEELogo},
     {name: "MySQL", id: 7, src: mysqlLogo},
+    {name: "Python", id: 8, src: pythonLogo},
 
 ]
 /* Available languages for the language switcher */

@@ -1,6 +1,5 @@
 import type {ButtonHTMLAttributes, MouseEvent, ReactNode} from "react";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 interface ButtonProdEnerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     name?: string
     title?: string

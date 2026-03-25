@@ -1,188 +1,152 @@
-import React, {useState} from 'react';
-import {Button, Card, Col, Container, Form, InputGroup, Row, Spinner} from 'react-bootstrap';
-import {useLoginMutation, useRegisterMutation} from '../../api/userApi';
-import {useDispatch} from 'react-redux';
-import {setUser} from '../../config/store/slices/userSlice';
-import {useNavigate} from 'react-router-dom';
-import {FaEnvelope, FaLock} from 'react-icons/fa';
+import {motion} from "framer-motion";
+import ExoUniversity from "../../assets/ExoUniversity.png";
+import ButtonProdEner from "../components/common/ButtonProdEner.tsx";
 
-const Login = () => {
-    const [isLogin, setIsLogin] = useState(true);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [preferredLanguage, setPreferredLanguage] = useState('en');
-    const [validated, setValidated] = useState(false);
-
-    const [login, {isLoading: isLoginLoading, error: loginError}] = useLoginMutation();
-    const [register, {isLoading: isRegisterLoading, error: registerError}] = useRegisterMutation();
-
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        const form = event.currentTarget;
-        event.preventDefault();
-
-        if (form.checkValidity() === false) {
-            event.stopPropagation();
-            setValidated(true);
-            return;
-        }
-
-        setValidated(true);
-
-        try {
-            if (isLogin) {
-                const result = await login({email, password}).unwrap();
-                dispatch(setUser(result));
-                navigate('/');
-            } else {
-                const result = await register({email, password, preferredLanguage}).unwrap();
-                dispatch(setUser(result));
-                navigate('/');
-            }
-        } catch (err) {
-            console.error('Failed to authenticate:', err);
-        }
-    };
-
-    const toggleMode = () => {
-        setIsLogin(!isLogin);
-        setValidated(false);
-    };
-
-    const isLoading = isLoginLoading || isRegisterLoading;
-    const error = isLogin ? loginError : registerError;
-
+export default function Login() {
     return (
-        <Container className="d-flex align-items-center justify-content-center min-vh-100 py-5">
-            <Row className="w-100 justify-content-center">
-                <Col md={8} lg={5} xl={4}>
-                    <Card className="shadow-lg border-0 fade-in-item"
-                          style={{
-                              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                              backdropFilter: 'blur(15px)',
-                              WebkitBackdropFilter: 'blur(15px)',
-                              borderRadius: '1.5rem',
-                              border: '1px solid rgba(255, 255, 255, 0.1)'
-                          }}>
-                        <Card.Body className="p-5 text-center">
-                            <div className="mb-4">
-                                <div className="display-4 text-primary mb-2">
-                                    <FaLock className="mb-3"/>
-                                </div>
-                                <h2 className="fw-bold text-white mb-2">{isLogin ? 'Welcome Back' : 'Join Us'}</h2>
-                                <p className="text-white-50">{isLogin ? 'Please enter your login details' : 'Create an account to start learning'}</p>
+        <div
+            className="bg-surface font-body text-on-surface min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed">
+            <main className="min-h-screen flex flex-col md:flex-row">
+
+                {/* LEFT */}
+                <section
+                    className="relative w-full md:w-1/2 lg:w-3/5 bg-surface-container-low overflow-hidden flex items-center justify-center p-12">
+                    <div className="absolute inset-0 z-0">
+                        <img
+                            src={ExoUniversity}
+                            alt="ExoUniversity"
+                            className="hidden w-full h-full object-cover opacity-90 md:block "
+                        />
+                        <div className="absolute inset-0 bg-primary/10 mix-blend-multiply"/>
+                        <div
+                            className="absolute inset-0 bg-gradient-to-tr from-surface via-transparent to-transparent opacity-60"/>
+                    </div>
+
+                    <div
+                        className="absolute bottom-12 left-12 right-12 text-[10px] uppercase tracking-[0.3em] text-on-surface-variant font-medium">
+                        Via Giulio Aristide Sartorio, 30, 00147 Roma RM
+                    </div>
+                </section>
+
+                {/* RIGHT */}
+                <section
+                    className="w-full md:w-1/2 lg:w-2/5 bg-surface flex flex-col justify-center px-8 md:px-16 lg:px-24 py-12">
+                    <motion.div
+                        initial={{opacity: 0, y: 30}}
+                        animate={{opacity: 1, y: 0}}
+                        transition={{duration: 0.6, ease: "easeOut"}}
+                        className="max-w-md w-full mx-auto"
+                    >
+
+                        {/* HEADER */}
+                        <header className="mb-12">
+                            <h1 className="font-headline text-3xl lg:text-4xl text-on-surface mb-3 italic">
+                                Begin Your Learning Journey.
+                            </h1>
+                            <p className="text-on-surface-variant text-sm font-light leading-relaxed">
+                                Welcome to ExoUniversity.
+                            </p>
+                        </header>
+
+                        {/* FORM */}
+                        <form className="space-y-8">
+                            <div className="space-y-6">
+
+                                {/* EMAIL */}
+                                <Input label="Email" type="email" placeholder="e.student@exouni.edu"
+                                       rightLink={undefined}/>
+
+                                {/* PASSWORD */}
+                                <Input
+                                    label="Password"
+                                    type="password"
+                                    placeholder="••••••••"
+                                    rightLink="Recovery"
+                                />
+
                             </div>
 
-                            <Form noValidate validated={validated} onSubmit={handleSubmit} className="text-start">
-                                <Form.Group className="mb-3" controlId="formEmail">
-                                    <Form.Label className="text-white-50">Email Address</Form.Label>
-                                    <InputGroup hasValidation>
-                                        <InputGroup.Text className="bg-dark border-secondary text-white-50">
-                                            <FaEnvelope/>
-                                        </InputGroup.Text>
-                                        <Form.Control
-                                            required
-                                            type="email"
-                                            placeholder="name@example.com"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            className="bg-dark border-secondary text-white"
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Please provide a valid email.
-                                        </Form.Control.Feedback>
-                                    </InputGroup>
-                                </Form.Group>
+                            {/* LOGIN BUTTON */}
+                            <ButtonProdEner title={"Login"} name={"Login"}
+                                            className="w-full bg-blue-600 text-white py-4 rounded-5 font-medium text-sm uppercase tracking-[0.15em] shadow-md hover:bg-blue-700 hover:shadow-lg active:scale-[0.98] transition-all"
+                            >
 
-                                <Form.Group className="mb-4" controlId="formPassword">
-                                    <Form.Label className="text-white-50">Password</Form.Label>
-                                    <InputGroup hasValidation>
-                                        <InputGroup.Text className="bg-dark border-secondary text-white-50">
-                                            <FaLock/>
-                                        </InputGroup.Text>
-                                        <Form.Control
-                                            required
-                                            type="password"
-                                            placeholder="••••••••"
-                                            value={password}
-                                            onChange={(e) => setPassword(e.target.value)}
-                                            className="bg-dark border-secondary text-white"
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Password is required.
-                                        </Form.Control.Feedback>
-                                    </InputGroup>
-                                </Form.Group>
+                            </ButtonProdEner>
 
-                                {!isLogin && (
-                                    <Form.Group className="mb-4" controlId="formLanguage">
-                                        <Form.Label className="text-white-50">Preferred Language</Form.Label>
-                                        <Form.Select
-                                            value={preferredLanguage}
-                                            onChange={(e) => setPreferredLanguage(e.target.value)}
-                                            className="bg-dark border-secondary text-white"
-                                        >
-                                            <option value="en">English</option>
-                                            <option value="it">Italian</option>
-                                            <option value="fr">French</option>
-                                        </Form.Select>
-                                    </Form.Group>
-                                )}
+                            {/* DIVIDER */}
+                            <div className="relative py-4 flex items-center gap-4">
+                                <div className="flex-grow h-[1px] bg-surface-container-high"/>
+                                <span
+                                    className="text-[10px] uppercase tracking-widest font-medium text-on-surface-variant">
+                  OR CONNECT VIA
+                </span>
+                                <div className="flex-grow h-[1px] bg-surface-container-high"/>
+                            </div>
 
-                                {error && (
-                                    <div className="alert alert-danger py-2 mb-4" role="alert"
-                                         style={{fontSize: '0.85rem'}}>
-                                        {'Authentication failed. Please try again.'}
-                                    </div>
-                                )}
-
-                                <Button
-                                    variant="primary"
-                                    type="submit"
-                                    className="w-100 py-3 mb-4 fw-bold rounded-pill"
-                                    disabled={isLoading}
+                            {/* GOOGLE */}
+                            <div className="flex justify-center">
+                                <button
+                                    type="button"
+                                    className="flex items-center justify-center gap-3 py-4 px-8 rounded-xl bg-surface-container-high hover:bg-surface-container-highest transition-all hover:scale-[1.02]"
                                 >
-                                    {isLoading ? (
-                                        <>
-                                            <Spinner as="span" animation="border" size="sm" role="status"
-                                                     aria-hidden="true" className="me-2"/>
-                                            Please wait...
-                                        </>
-                                    ) : (
-                                        isLogin ? 'Login' : 'Sign Up'
-                                    )}
-                                </Button>
+                  <span className="material-symbols-outlined text-[18px]">
+                    cloud_queue
+                  </span>
+                                    <span className="text-[11px] uppercase tracking-wider font-bold">
+                    Google
+                  </span>
+                                </button>
+                            </div>
 
-                                <div className="text-center text-white-50">
-                                    {isLogin ? (
-                                        <>
-                                            Don't have an account?{' '}
-                                            <Button variant="link"
-                                                    className="p-0 text-primary text-decoration-none fw-bold"
-                                                    onClick={toggleMode}>
-                                                Register
-                                            </Button>
-                                        </>
-                                    ) : (
-                                        <>
-                                            Already have an account?{' '}
-                                            <Button variant="link"
-                                                    className="p-0 text-primary text-decoration-none fw-bold"
-                                                    onClick={toggleMode}>
-                                                Log in
-                                            </Button>
-                                        </>
-                                    )}
-                                </div>
-                            </Form>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
-        </Container>
+                        </form>
+
+                        {/* FOOTER */}
+                        <footer
+                            className="mt-16 pt-8 border-t border-surface-container-low flex justify-between items-baseline">
+                            <p className="text-[10px] leading-none text-on-surface-variant/60 uppercase tracking-widest">
+                                Not yet registered?
+                            </p>
+                            <a
+                                href="#"
+                                className="text-[10px] leading-none uppercase tracking-widest font-bold text-primary hover:opacity-70"
+                            >
+                                Create an account
+                            </a>
+                        </footer>
+
+                    </motion.div>
+                </section>
+
+            </main>
+        </div>
     );
-};
+}
 
-export default Login;
+function Input({label, type, placeholder, rightLink}: any) {
+    return (
+        <div className="relative group">
+            <div className="flex justify-between items-end mb-2 ml-1">
+                <label className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">
+                    {label}
+                </label>
+                {rightLink && (
+                    <a
+                        href="#"
+                        className="text-[10px] uppercase tracking-widest font-bold text-primary hover:opacity-70"
+                    >
+                        {rightLink}
+                    </a>
+                )}
+            </div>
+
+            <div className="flex">
+                <div className="w-[2px] bg-outline-variant group-focus-within:bg-primary transition-colors"/>
+                <input
+                    type={type}
+                    placeholder={placeholder}
+                    className="w-full bg-surface-container-low border-none focus:ring-0 py-4 px-4 text-sm font-medium placeholder:text-slate-400 outline-none"
+                />
+            </div>
+        </div>
+    );
+}
